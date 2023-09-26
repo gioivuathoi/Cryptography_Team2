@@ -81,9 +81,9 @@ def decryption(keyword, cipher_text):
 
 
 # Let's test our functions
-plain_text = "I love you, Babe!!!!"
-enc = encryption(plain_text)
-print(enc)
-keyword = enc["keyword"]
-cipher_text = enc["cipher_text"]
-print(decryption(keyword, cipher_text))
+# plain_text = "I love you, Babe!!!!"
+# enc = encryption(plain_text)
+# print(enc)
+# keyword = enc["keyword"]
+# cipher_text = enc["cipher_text"]
+# print(decryption(keyword, cipher_text))
