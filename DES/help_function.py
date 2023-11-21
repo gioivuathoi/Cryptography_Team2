@@ -230,12 +230,12 @@ def encrypt(pt, rkb, rk):
 	return cipher_text
 
 
-pt = "123456ABCD132536"
-key = "AABB09182736CCDD"
+# pt = "123456ABCD132536"
+# key = "AABB09182736CCDD"
 
 # Key generation
 # --hex to binary
-key = hex2bin(key)
+# key = hex2bin(key)
 
 # --parity bit drop table
 keyp = [57, 49, 41, 33, 25, 17, 9,
@@ -248,7 +248,7 @@ keyp = [57, 49, 41, 33, 25, 17, 9,
 		21, 13, 5, 28, 20, 12, 4]
 
 # getting 56 bit key from 64 bit using the parity bits
-key = permute(key, keyp, 56)
+# key = permute(key, keyp, 56)
 
 # Number of bit shifts
 shift_table = [1, 1, 2, 2,
@@ -267,32 +267,33 @@ key_comp = [14, 17, 11, 24, 1, 5,
 			46, 42, 50, 36, 29, 32]
 
 # Splitting
-left = key[0:28] # rkb for RoundKeys in binary
-right = key[28:56] # rk for RoundKeys in hexadecimal
+# left = key[0:28] # rkb for RoundKeys in binary
+# right = key[28:56] # rk for RoundKeys in hexadecimal
 
-rkb = []
-rk = []
-for i in range(0, 16):
-	# Shifting the bits by nth shifts by checking from shift table
-	left = shift_left(left, shift_table[i])
-	right = shift_left(right, shift_table[i])
+# rkb = []
+# rk = []
+# for i in range(0, 16):
+# 	# Shifting the bits by nth shifts by checking from shift table
+# 	left = shift_left(left, shift_table[i])
+# 	right = shift_left(right, shift_table[i])
 
-	# Combination of left and right string
-	combine_str = left + right
+# 	# Combination of left and right string
+# 	combine_str = left + right
 
-	# Compression of key from 56 to 48 bits
-	round_key = permute(combine_str, key_comp, 48)
+# 	# Compression of key from 56 to 48 bits
+# 	round_key = permute(combine_str, key_comp, 48)
 
-	rkb.append(round_key)
-	rk.append(bin2hex(round_key))
+# 	rkb.append(round_key)
+# 	rk.append(bin2hex(round_key))
 
-print("Encryption")
-cipher_text = bin2hex(encrypt(pt, rkb, rk))
-print("Cipher Text : ", cipher_text)
+# print("Encryption")
+# cipher_text = bin2hex(encrypt(pt, rkb, rk))
+# print("Cipher Text : ", cipher_text)
 
-print("Decryption")
-rkb_rev = rkb[::-1]
-rk_rev = rk[::-1]
-text = bin2hex(encrypt(cipher_text, rkb_rev, rk_rev))
-print("Plain Text : ", text)
+# print("Decryption")
+# rkb_rev = rkb[::-1]
+# rk_rev = rk[::-1]
+# text = bin2hex(encrypt(cipher_text, rkb_rev, rk_rev))
+# print("Plain Text : ", text)
 
+print(hex2bin("123ABC"))

@@ -79,12 +79,13 @@ final_perm = [40, 8, 48, 16, 56, 24, 64, 32,
 			33, 1, 41, 9, 49, 17, 57, 25]
 
 
-def encrypt(pt, rkb, rk):
-	pt = hex2bin(pt)
-
+def encrypt(pt, rkb, rk, input_bin = False):
+	if input_bin == False:
+		pt = hex2bin(pt)
+	# print(len(pt))
 	# Step 1: Initial Permutation
 	pt = permute(pt, initial_perm, 64)
-	print("After initial permutation", bin2hex(pt))
+	# print("After initial permutation", bin2hex(pt))
 
 	# Step 2: Splitting for the input ò 16 rounds
 	left = pt[0:32]
@@ -116,8 +117,7 @@ def encrypt(pt, rkb, rk):
 		# Swapper
 		if(i != 15):
 			left, right = right, left
-		print("Round ", i + 1, " ", bin2hex(left),
-			" ", bin2hex(right), " ", rk[i])
+		# print("Round ", i + 1, " ", bin2hex(left)," ", bin2hex(right), " ", rk[i])
     
 	# After 16 round, we comebine the 32-bit Left and 32-bit Right
 	combine = left + right
@@ -184,9 +184,12 @@ def key_generation(key):
 
     return rk, rkb
 
-def decrypt(ct, rkb, rk):
+def decrypt(ct, rkb, rk, to_hex = True):
     rkb_rev = rkb[::-1]
     rk_rev = rk[::-1]
-    text = bin2hex(encrypt(cipher_text, rkb_rev, rk_rev))
+    if to_hex:
+       text = bin2hex(encrypt(ct, rkb_rev, rk_rev, input_bin=True))
+    else:
+       text = encrypt(ct,rkb,rk, input_bin=True)
     return text
 
