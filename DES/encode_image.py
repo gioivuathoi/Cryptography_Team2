@@ -79,7 +79,7 @@ def decrypt_image(ct, key = None):
 #Part 3: Convert bit string to bytes and save the image
     image = bitstring_to_bytes(plain_text)
     print(image[:8])
-    fin = open(r"F:\Subjects\Lý thuyết mật mã\encryption\DES\save_image.jpg", 'wb')
+    fin = open(r"save_image.jpg", 'wb')
 #  writing encrypted data in image
     fin.write(image)
     fin.close()
@@ -87,6 +87,6 @@ def decrypt_image(ct, key = None):
     return plain_text
 
 cipher_text = encrypt_image()
-decrypt_image(cipher_text, key = "AABB09182736CCDD")
+decrypt_image(cipher_text)
 
 # print(bitstring_to_bytes("0000000001111000000000000000000011111111110110110000000001000011"))
