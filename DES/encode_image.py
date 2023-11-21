@@ -1,5 +1,5 @@
-from help_function import  *
-from enc_dec import  *
+from DES.help_function import  *
+from DES.enc_dec import  *
 
 def pad(data): 
     return data + b"\x00"*(8-len(data)%8)  
@@ -78,7 +78,7 @@ def decrypt_image(ct, key = None):
     
 #Part 3: Convert bit string to bytes and save the image
     image = bitstring_to_bytes(plain_text)
-    print(image[:8])
+    # print(image[:8])
     fin = open(r"save_image.jpg", 'wb')
 #  writing encrypted data in image
     fin.write(image)
@@ -86,7 +86,7 @@ def decrypt_image(ct, key = None):
     print("Done decryption!!")
     return plain_text
 
-cipher_text = encrypt_image()
-decrypt_image(cipher_text)
+# cipher_text = encrypt_image()
+# decrypt_image(cipher_text)
 
 # print(bitstring_to_bytes("0000000001111000000000000000000011111111110110110000000001000011"))

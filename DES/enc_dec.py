@@ -1,4 +1,4 @@
-from help_function import *
+from DES.help_function import *
 # Table of Position of 64 bits at initial level: Initial Permutation Table
 initial_perm = [58, 50, 42, 34, 26, 18, 10, 2,
 				60, 52, 44, 36, 28, 20, 12, 4,
