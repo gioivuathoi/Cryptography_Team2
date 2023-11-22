@@ -34,5 +34,5 @@ def decrypt_image(ct, key = None):
     fin.close()
     print("Done decryption!!")
 
-cipher_text = encrypt_image()
-decrypt_image(cipher_text)
+# cipher_text = encrypt_image()
+# decrypt_image(cipher_text)
